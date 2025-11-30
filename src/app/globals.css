@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   PSEO ENGINE - GLOBAL STYLES
+   Premium Navy/Gold Theme for London Luxury Market
+   ============================================================================ */
+
+@layer base {
+  :root {
+    /* Navy Primary */
+    --navy-50: 240 244 248;
+    --navy-100: 217 226 236;
+    --navy-200: 188 204 220;
+    --navy-300: 159 179 200;
+    --navy-400: 130 154 177;
+    --navy-500: 98 125 152;
+    --navy-600: 72 101 129;
+    --navy-700: 51 78 104;
+    --navy-800: 36 59 83;
+    --navy-900: 16 42 67;
+    --navy-950: 10 25 41;
+
+    /* Gold Accent */
+    --gold-50: 255 251 235;
+    --gold-100: 254 243 199;
+    --gold-200: 253 230 138;
+    --gold-300: 252 211 77;
+    --gold-400: 251 191 36;
+    --gold-500: 245 158 11;
+    --gold-600: 217 119 6;
+    --gold-700: 180 83 9;
+    --gold-800: 146 64 14;
+    --gold-900: 120 53 15;
+
+    /* Cream Background */
+    --cream-50: 253 252 251;
+    --cream-100: 250 248 245;
+    --cream-200: 245 240 234;
+    --cream-300: 235 227 217;
+    --cream-400: 217 205 191;
+
+    /* Semantic Colors */
+    --background: var(--cream-50);
+    --foreground: var(--navy-900);
+    --card: 255 255 255;
+    --card-foreground: var(--navy-900);
+    --primary: var(--navy-800);
+    --primary-foreground: 255 255 255;
+    --secondary: var(--gold-500);
+    --secondary-foreground: var(--navy-900);
+    --muted: var(--cream-200);
+    --muted-foreground: var(--navy-600);
+    --accent: var(--gold-400);
+    --accent-foreground: var(--navy-900);
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: var(--cream-300);
+    --input: var(--cream-200);
+    --ring: var(--gold-500);
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-cream-200;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-navy-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Selection styling */
+  ::selection {
+    @apply bg-gold-200 text-navy-900;
+  }
+
+  /* Focus styling */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-cream-50;
+  }
+}
+
+@layer components {
+  /* Premium Button Styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           bg-navy-800 text-white font-medium rounded-lg
+           hover:bg-navy-700 active:bg-navy-900
+           transition-all duration-200 ease-in-out
+           shadow-lg hover:shadow-xl
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           bg-gold-500 text-navy-900 font-medium rounded-lg
+           hover:bg-gold-400 active:bg-gold-600
+           transition-all duration-200 ease-in-out
+           shadow-lg hover:shadow-xl
+           focus:outline-none focus:ring-2 focus:ring-navy-800 focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3
+           border-2 border-navy-800 text-navy-800 font-medium rounded-lg
+           hover:bg-navy-800 hover:text-white
+           transition-all duration-200 ease-in-out
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2
+           text-navy-700 font-medium rounded-lg
+           hover:bg-cream-200 hover:text-navy-900
+           transition-all duration-200 ease-in-out;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white rounded-xl shadow-lg overflow-hidden
+           border border-cream-200
+           transition-all duration-300 ease-in-out
+           hover:shadow-xl hover:border-cream-300;
+  }
+
+  .card-luxury {
+    @apply bg-white rounded-xl shadow-luxury overflow-hidden
+           border border-gold-200
+           transition-all duration-300 ease-in-out
+           hover:shadow-gold-glow;
+  }
+
+  /* Section Styles */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-navy {
+    @apply bg-gradient-luxury text-white py-16 md:py-24;
+  }
+
+  .section-cream {
+    @apply bg-cream-100 py-16 md:py-24;
+  }
+
+  /* Container */
+  .container-lg {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Typography */
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  .heading-4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  .body-large {
+    @apply text-lg md:text-xl leading-relaxed;
+  }
+
+  .body {
+    @apply text-base leading-relaxed;
+  }
+
+  .body-small {
+    @apply text-sm leading-relaxed;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-gold {
+    @apply bg-gold-100 text-gold-800;
+  }
+
+  .badge-navy {
+    @apply bg-navy-100 text-navy-800;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  /* Trust Badge */
+  .trust-badge {
+    @apply flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-md
+           border border-cream-200;
+  }
+
+  /* Form Styles */
+  .input {
+    @apply w-full px-4 py-3 bg-white border border-cream-300 rounded-lg
+           text-navy-900 placeholder:text-navy-400
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .textarea {
+    @apply w-full px-4 py-3 bg-white border border-cream-300 rounded-lg
+           text-navy-900 placeholder:text-navy-400 resize-y min-h-[120px]
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-navy-700 mb-2;
+  }
+
+  /* Star Rating */
+  .star-rating {
+    @apply flex items-center gap-0.5;
+  }
+
+  .star-rating .star {
+    @apply w-5 h-5 text-gold-400;
+  }
+
+  .star-rating .star-empty {
+    @apply w-5 h-5 text-cream-300;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent;
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-cream-300 to-transparent;
+  }
+
+  .divider-gold {
+    @apply h-px bg-gradient-to-r from-transparent via-gold-300 to-transparent;
+  }
+}
+
+@layer utilities {
+  /* Animation Delays */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Text Balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth scroll snap */
+  .snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+  }
+
+  .snap-start {
+    scroll-snap-align: start;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  .glass-dark {
+    @apply bg-navy-900/80 backdrop-blur-md;
+  }
+}
+
+/* Google Maps Override */
+.gm-style {
+  font-family: inherit !important;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .section-navy {
+    background: white !important;
+    color: black !important;
+  }
+}
