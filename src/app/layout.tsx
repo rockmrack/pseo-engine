@@ -6,6 +6,8 @@ import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { WebVitals } from '@/components/analytics/WebVitals';
+import { EmergencyBanner } from '@/components/banners/EmergencyBanner';
+import { AggregateReviewSchema } from '@/components/schema/AggregateReviewSchema';
 import { siteConfig, BASE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
@@ -98,9 +100,11 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-screen flex flex-col">
+        <AggregateReviewSchema />
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <EmergencyBanner variant="floating" />
         <Analytics />
         <WebVitals />
       </body>

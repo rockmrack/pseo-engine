@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { locations } from '@/lib/data/locations';
 import { services } from '@/lib/data/services';
+import { serviceAreas } from '@/lib/data/areas';
+import { blogPosts } from '@/lib/data/blog-templates';
 import { BASE_URL } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -90,13 +92,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Service area hub pages (postcode areas, boroughs)
+  const serviceAreaPages: MetadataRoute.Sitemap = serviceAreas.map(area => ({
+    url: `${baseUrl}/areas/${area.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  // Blog posts
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.8,
+    },
+    ...blogPosts.map(post => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.publishDate),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ];
+
+  // Gallery page
+  const galleryPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+  ];
+
   // Combine all pages
   return [
     ...staticPages,
     ...serviceCategoryPages,
     ...servicePages,
     ...areaPages,
+    ...serviceAreaPages,
     ...locationHubPages,
     ...pseoPages,
+    ...blogPages,
+    ...galleryPages,
   ];
 }
