@@ -7,8 +7,8 @@ import { SiteConfig } from '@/types';
 
 export const siteConfig: SiteConfig = {
   businessName: 'Hampstead Renovations',
-  phone: '020 7946 0958',
-  email: 'enquiries@hampsteadrenovations.co.uk',
+  phone: '07459 345456',
+  email: 'contact@hampsteadrenovations.co.uk',
   address: {
     street: '250 Finchley Road',
     city: 'London',
