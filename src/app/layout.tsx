@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { WebVitals } from '@/components/analytics/WebVitals';
 import { siteConfig, BASE_URL } from '@/lib/config';
 
 export const metadata: Metadata = {
@@ -101,6 +102,7 @@ export default function RootLayout({
         <main className="flex-grow">{children}</main>
         <Footer />
         <Analytics />
+        <WebVitals />
       </body>
     </html>
   );

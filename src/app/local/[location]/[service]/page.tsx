@@ -1,11 +1,18 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
+import { Suspense } from 'react';
 
-import { locations, getLocationBySlug } from '@/lib/data/locations';
-import { services, getServiceBySlug } from '@/lib/data/services';
-import { generatePageContent, getDistanceFromHQ } from '@/lib/content-engine';
-import { BASE_URL, REVALIDATE_TIMES } from '@/lib/config';
+// Use optimized data access layer
+import {
+  getLocation,
+  getService,
+  allLocationSlugs,
+  allServiceSlugs,
+  calculateDistanceFast,
+} from '@/lib/data-access';
+import { generatePageContent } from '@/lib/content-engine';
+import { BASE_URL, REVALIDATE_TIMES, siteConfig } from '@/lib/config';
+import { pageContentCache, schemaCache, cacheKeys } from '@/lib/cache';
 
 import { HeroSection } from '@/components/pseo/HeroSection';
 import { ServiceDetailSection } from '@/components/pseo/ServiceDetailSection';
@@ -17,23 +24,19 @@ import { CTASection } from '@/components/pseo/CTASection';
 import { NearbyLinksSection } from '@/components/pseo/NearbyLinksSection';
 
 // ============================================================================
-// STATIC PARAMS GENERATION
-// Pre-generate the most important pages at build time
+// OPTIMIZED STATIC PARAMS GENERATION
+// Generate ALL combinations at build time for maximum performance
 // ============================================================================
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
+  // Pre-compute all valid combinations for full static generation
   const params: { location: string; service: string }[] = [];
 
-  // Generate top 100 priority combinations at build time
-  // The rest will be generated on-demand with ISR
-  const priorityLocations = locations.slice(0, 20); // Top 20 locations
-  const priorityServices = services.slice(0, 10); // Top 10 services
-
-  for (const loc of priorityLocations) {
-    for (const serv of priorityServices) {
+  for (const locSlug of allLocationSlugs) {
+    for (const svcSlug of allServiceSlugs) {
       params.push({
-        location: loc.slug,
-        service: serv.slug,
+        location: locSlug,
+        service: svcSlug,
       });
     }
   }
@@ -42,8 +45,7 @@ export async function generateStaticParams() {
 }
 
 // ============================================================================
-// METADATA GENERATION
-// Dynamic metadata for each page
+// OPTIMIZED METADATA GENERATION WITH CACHING
 // ============================================================================
 
 interface PageProps {
@@ -54,17 +56,24 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const location = getLocationBySlug(resolvedParams.location);
-  const service = getServiceBySlug(resolvedParams.service);
+  const { location: locSlug, service: svcSlug } = await params;
+
+  // O(1) lookups using indexed data
+  const location = getLocation(locSlug);
+  const service = getService(svcSlug);
 
   if (!location || !service) {
-    return {
-      title: 'Page Not Found',
-    };
+    return { title: 'Page Not Found' };
   }
 
-  const content = generatePageContent(location, service);
+  // Check cache for page content
+  const cacheKey = cacheKeys.pageContent(locSlug, svcSlug);
+  let content = pageContentCache.get(cacheKey) as ReturnType<typeof generatePageContent> | undefined;
+
+  if (!content) {
+    content = generatePageContent(location, service);
+    pageContentCache.set(cacheKey, content, 86400000); // 24 hours
+  }
 
   return {
     title: content.meta.title,
@@ -80,20 +89,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: 'Hampstead Renovations',
       locale: 'en_GB',
       type: 'website',
-      images: [
-        {
-          url: `${BASE_URL}/og/${location.slug}-${service.slug}.jpg`,
-          width: 1200,
-          height: 630,
-          alt: `${service.name} in ${location.name}`,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: content.meta.title,
       description: content.meta.description,
-      images: [`${BASE_URL}/og/${location.slug}-${service.slug}.jpg`],
     },
     robots: {
       index: true,
@@ -110,56 +110,89 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 // ============================================================================
-// PAGE COMPONENT
+// SCHEMA COMPONENT - Separated for better code splitting
+// ============================================================================
+
+function SchemaMarkup({ schema }: { schema: ReturnType<typeof generatePageContent>['schema'] }) {
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema.localBusiness),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema.service),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema.breadcrumb),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema.faq),
+        }}
+      />
+    </>
+  );
+}
+
+// ============================================================================
+// LOADING SKELETON FOR SUSPENSE
+// ============================================================================
+
+function SectionSkeleton() {
+  return (
+    <div className="animate-pulse bg-cream-100 h-64 w-full" />
+  );
+}
+
+// ============================================================================
+// MAIN PAGE COMPONENT - OPTIMIZED
 // ============================================================================
 
 export default async function LocalServicePage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const location = getLocationBySlug(resolvedParams.location);
-  const service = getServiceBySlug(resolvedParams.service);
+  const { location: locSlug, service: svcSlug } = await params;
 
-  // 404 if invalid combination
+  // O(1) lookups using indexed data
+  const location = getLocation(locSlug);
+  const service = getService(svcSlug);
+
+  // Fast 404 check
   if (!location || !service) {
     notFound();
   }
 
-  // Generate all page content
-  const content = generatePageContent(location, service);
-  const distance = getDistanceFromHQ(location);
+  // Check cache first for page content
+  const cacheKey = cacheKeys.pageContent(locSlug, svcSlug);
+  let content = pageContentCache.get(cacheKey) as ReturnType<typeof generatePageContent> | undefined;
+
+  if (!content) {
+    content = generatePageContent(location, service);
+    pageContentCache.set(cacheKey, content, 86400000); // 24 hours
+  }
+
+  // Optimized distance calculation with caching
+  const distance = calculateDistanceFast(
+    siteConfig.address.coordinates.lat,
+    siteConfig.address.coordinates.lng,
+    location.coordinates.lat,
+    location.coordinates.lng
+  ).toFixed(1);
 
   return (
     <>
-      {/* Structured Data */}
-      <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(content.schema.localBusiness),
-        }}
-      />
-      <Script
-        id="service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(content.schema.service),
-        }}
-      />
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(content.schema.breadcrumb),
-        }}
-      />
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(content.schema.faq),
-        }}
-      />
+      {/* Schema Markup - rendered inline for SEO */}
+      <SchemaMarkup schema={content.schema} />
 
-      {/* Hero Section */}
+      {/* Hero Section - Critical, no lazy loading */}
       <HeroSection
         h1={content.hero.h1}
         subtitle={content.hero.subtitle}
@@ -170,7 +203,7 @@ export default async function LocalServicePage({ params }: PageProps) {
         location={location.name}
       />
 
-      {/* Service Details */}
+      {/* Service Details - Critical */}
       <ServiceDetailSection
         title={content.serviceDetail.title}
         body={content.serviceDetail.body}
@@ -179,18 +212,22 @@ export default async function LocalServicePage({ params }: PageProps) {
         priceAnchor={service.priceAnchor}
       />
 
-      {/* Local Map */}
-      <LocalMapSection location={location} />
+      {/* Local Map - Can be deferred */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <LocalMapSection location={location} />
+      </Suspense>
 
       {/* Trust Signals */}
       <TrustSignalsSection signals={content.trustSignals} />
 
-      {/* Testimonials */}
-      <TestimonialsSection
-        testimonials={content.testimonials}
-        title={`${service.name} Reviews in ${location.area}`}
-        subtitle={`See what our ${location.area} customers say about our ${service.name.toLowerCase()} services.`}
-      />
+      {/* Testimonials - Below fold, can be deferred */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <TestimonialsSection
+          testimonials={content.testimonials}
+          title={`${service.name} Reviews in ${location.area}`}
+          subtitle={`See what our ${location.area} customers say about our ${service.name.toLowerCase()} services.`}
+        />
+      </Suspense>
 
       {/* FAQ */}
       <FAQSection
@@ -213,8 +250,10 @@ export default async function LocalServicePage({ params }: PageProps) {
 }
 
 // ============================================================================
-// ISR CONFIGURATION
-// Revalidate pages every 24 hours
+// ISR CONFIGURATION - Longer revalidation for stable content
 // ============================================================================
 
 export const revalidate = REVALIDATE_TIMES.landingPage;
+
+// Enable dynamic params for any location/service combination
+export const dynamicParams = true;
