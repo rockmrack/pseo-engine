@@ -6,3 +6,4 @@ export { FAQSection } from './FAQSection';
 export { CTASection } from './CTASection';
 export { NearbyLinksSection } from './NearbyLinksSection';
 export { LocalMapSection } from './LocalMapSection';
+export { ReviewsSection } from './ReviewsSection';
