@@ -27,6 +27,62 @@ export const locations: Location[] = [
     nearbyStreets: ['frognal-lane', 'lindfield-gardens', 'templewood-avenue', 'platt-lane', 'arkwright-road'],
     landmarks: ['Hampstead Heath', 'Freud Museum', 'Kenwood House'],
     transportLinks: ['Hampstead Underground', 'Finchley Road & Frognal'],
+
+    // NEW: Street-Level Authority Data
+    streetData: {
+      avgSoldPrice: '£6.8m (2024)',
+      pricePerSqFt: '£1,650/sq ft',
+      recentSales: [
+        { year: 2024, avgPrice: '£6.8m', volume: 4 },
+        { year: 2023, avgPrice: '£5.9m', volume: 6 },
+        { year: 2022, avgPrice: '£5.2m', volume: 8 },
+      ],
+      conservationArea: {
+        status: true,
+        name: 'Hampstead Conservation Area',
+        restrictions: [
+          'Listed Building Consent may be required',
+          'Article 4 Direction in effect',
+          'Strict controls on external alterations',
+          'Original features must be preserved where possible',
+        ],
+      },
+      historicalInfo: {
+        builtPeriod: '1880-1920',
+        architecturalStyle: 'Late Victorian & Edwardian',
+        notableFeatures: [
+          'Original sash windows',
+          'Decorative plasterwork cornicing',
+          'Period fireplaces',
+          'Servants\' quarters',
+          'Large mature gardens',
+        ],
+        historicalNotes: 'Redington Road was developed in the late Victorian era as part of the expansion of affluent Hampstead. Many properties were built as substantial family homes for wealthy merchants and professionals. The street has maintained its prestigious character and remains one of London\'s most exclusive addresses.',
+      },
+      completedProjects: [
+        {
+          id: 'rr-001',
+          title: 'Full House Rewire & Smart Home',
+          service: 'electrical-rewiring',
+          year: 2024,
+          description: 'Complete electrical upgrade of 6-bedroom Victorian property including smart lighting, underfloor heating controls, and EV charger installation.',
+          testimonialSnippet: 'Exceptional attention to detail. They understood the importance of preserving our period features.',
+        },
+        {
+          id: 'rr-002',
+          title: 'Victorian Bathroom Restoration',
+          service: 'bathroom-installation',
+          year: 2023,
+          description: 'Sympathetic restoration of master bathroom with underfloor heating, walk-in shower, and restored original cast iron radiator.',
+        },
+      ],
+      localInsights: [
+        'Parking permit zone H - we handle permit arrangements',
+        'Many properties suitable for basement excavation (subject to planning)',
+        'Original coal cellars often converted to wine storage',
+        'Period sash window restoration specialists recommended',
+      ],
+    },
   },
   {
     slug: 'frognal-lane',

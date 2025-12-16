@@ -20,6 +20,49 @@ export interface Location {
   nearbyStreets: string[];
   landmarks: string[];
   transportLinks: string[];
+
+  // Street-Level Authority Data (NEW)
+  streetData?: StreetLevelData;
+}
+
+// NEW: Street-Level Data for Hyper-Local Authority
+export interface StreetLevelData {
+  // Property Market Data
+  avgSoldPrice?: string;           // e.g., "£3.2m (2024)"
+  pricePerSqFt?: string;           // e.g., "£1,450/sq ft"
+  recentSales?: {
+    year: number;
+    avgPrice: string;
+    volume: number;
+  }[];
+
+  // Conservation & Planning
+  conservationArea?: {
+    status: boolean;
+    name?: string;                  // e.g., "Hampstead Conservation Area"
+    restrictions?: string[];        // e.g., ["Listed building consent required", "Article 4 Direction"]
+  };
+
+  // Historical & Architectural
+  historicalInfo?: {
+    builtPeriod?: string;           // e.g., "1880-1910"
+    architecturalStyle?: string;    // e.g., "Late Victorian / Edwardian"
+    notableFeatures?: string[];     // e.g., ["Original sash windows", "Decorative plasterwork"]
+    historicalNotes?: string;       // Short paragraph about the street's history
+  };
+
+  // Our Work on This Street (Case Studies)
+  completedProjects?: {
+    id: string;
+    title: string;
+    service: string;
+    year: number;
+    description: string;
+    testimonialSnippet?: string;
+  }[];
+
+  // Local Knowledge
+  localInsights?: string[];         // e.g., ["Parking permit zone M", "Many properties have basement potential"]
 }
 
 export type PropertyType =
