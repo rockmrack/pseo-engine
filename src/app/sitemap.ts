@@ -13,6 +13,13 @@ import { generateComparisonParams } from '@/lib/data/comparison-pages';
 import { generateProblemParams } from '@/lib/data/problems-database';
 import { generatePropertyServiceParams } from '@/lib/data/property-matrix';
 import { generateTrustParams } from '@/lib/data/trust-pages';
+// 10x SEO Domination imports
+import { generateStreetParams } from '@/lib/data/streets-database';
+import { generateCertificationParams } from '@/lib/data/certifications-database';
+import { generateFAQParams } from '@/lib/data/faq-database';
+import { generatePriceParams } from '@/lib/data/price-database';
+import { generateProjectParams } from '@/lib/data/projects-database';
+import { generateEmergencyParams } from '@/lib/data/emergency-database';
 import { BASE_URL } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -239,6 +246,101 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  // ============================================================================
+  // 10x SEO DOMINATION - NEW PAGE TYPES
+  // ============================================================================
+
+  // Street-level pages (e.g., "renovations on heath-street")
+  const streetParams = generateStreetParams();
+  const streetPages: MetadataRoute.Sitemap = streetParams.map(p => ({
+    url: `${baseUrl}/streets/${p.street}/${p.service}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Fix/Problem+Area pages (e.g., "fix leaking-pipe in hampstead")
+  const fixProblemParams = generateProblemParams();
+  const uniqueAreas = Array.from(new Set(locations.map(l => l.area)));
+  const areaSlugMap = uniqueAreas.map(a => a.toLowerCase().replace(/\s+/g, '-').replace(/'/g, ''));
+  const fixPages: MetadataRoute.Sitemap = [];
+  for (const problem of fixProblemParams) {
+    for (const areaSlug of areaSlugMap) {
+      fixPages.push({
+        url: `${baseUrl}/fix/${problem.problem}/${areaSlug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      });
+    }
+  }
+
+  // Emergency time-based pages (e.g., "24-hour plumber in hampstead")
+  const emergencyTimeParams = generateEmergencyParams();
+  const emergencyTimePages: MetadataRoute.Sitemap = emergencyTimeParams.map(p => ({
+    url: `${baseUrl}/urgent/${p.time}/${p.service}/${p.area}`,
+    lastModified: currentDate,
+    changeFrequency: 'daily' as const,
+    priority: 0.95,
+  }));
+
+  // Price guide pages (e.g., "bathroom-renovation prices in hampstead")
+  const priceParams = generatePriceParams();
+  const priceGuidePages: MetadataRoute.Sitemap = priceParams.map(p => ({
+    url: `${baseUrl}/prices/${p.service}/${p.area}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Project portfolio pages (e.g., "victorian-renovation projects in hampstead")
+  const projectParams = generateProjectParams();
+  const projectPortfolioPages: MetadataRoute.Sitemap = projectParams.map(p => ({
+    url: `${baseUrl}/projects/${p.type}/${p.area}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.75,
+  }));
+
+  // Certification pages (e.g., "gas-safe certified boiler-installation")
+  const certificationParams = generateCertificationParams();
+  const certificationPages: MetadataRoute.Sitemap = certificationParams.map(p => ({
+    url: `${baseUrl}/certified/${p.certification}/${p.service}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // FAQ hub pages (e.g., "renovation faqs about planning")
+  const faqParams = generateFAQParams();
+  const faqHubPages: MetadataRoute.Sitemap = faqParams.map(p => ({
+    url: `${baseUrl}/faqs/${p.category}/${p.topic}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
+  // Reviews by area pages
+  const reviewsPages: MetadataRoute.Sitemap = areaSlugMap.map(areaSlug => ({
+    url: `${baseUrl}/reviews/${areaSlug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  // Booking pages (e.g., "book bathroom-renovation in hampstead")
+  const bookingPages: MetadataRoute.Sitemap = [];
+  for (const service of services.slice(0, 15)) {
+    for (const areaSlug of areaSlugMap) {
+      bookingPages.push({
+        url: `${baseUrl}/book/${service.slug}/${areaSlug}`,
+        lastModified: currentDate,
+        changeFrequency: 'daily' as const,
+        priority: 0.9,
+      });
+    }
+  }
+
   // Combine all pages
   return [
     ...staticPages,
@@ -261,5 +363,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...problemPages,
     ...propertyServicePages,
     ...trustAreaPages,
+    // 10x SEO Domination pages
+    ...streetPages,
+    ...fixPages,
+    ...emergencyTimePages,
+    ...priceGuidePages,
+    ...projectPortfolioPages,
+    ...certificationPages,
+    ...faqHubPages,
+    ...reviewsPages,
+    ...bookingPages,
   ];
 }
