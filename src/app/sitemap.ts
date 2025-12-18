@@ -20,6 +20,22 @@ import { generateFAQParams } from '@/lib/data/faq-database';
 import { generatePriceParams } from '@/lib/data/price-database';
 import { generateProjectParams } from '@/lib/data/projects-database';
 import { generateEmergencyParams } from '@/lib/data/emergency-database';
+// 50 SEO Improvements - Additional imports
+import { beforeAfterProjects } from '@/lib/data/before-after-database';
+import { costGuides } from '@/lib/data/cost-guide-database';
+import { caseStudies } from '@/lib/data/case-studies-database';
+import { checklists } from '@/lib/data/checklists-database';
+import { decisionGuides } from '@/lib/data/decision-guides-database';
+import { boroughs } from '@/lib/data/boroughs-database';
+import { landlordServices } from '@/lib/data/landlord-database';
+import { sameDayServices } from '@/lib/data/same-day-database';
+import { maintenancePackages } from '@/lib/data/packages-database';
+import { brandComparisons } from '@/lib/data/brand-alternatives-database';
+import { insuranceServices } from '@/lib/data/insurance-compliance-database';
+import { testimonialCategories } from '@/lib/data/testimonials-database';
+import { propertyEras, servicesForPropertyTypes } from '@/lib/data/property-age-database';
+import { rooms, roomServices } from '@/lib/data/room-services-database';
+import { seasons } from '@/lib/data/seasonal-services-database';
 import { BASE_URL } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -341,6 +357,212 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // ============================================================================
+  // 50 SEO IMPROVEMENTS - NEW PAGE TYPES
+  // ============================================================================
+
+  // Before/After Gallery pages by service
+  const galleryServicePages: MetadataRoute.Sitemap = beforeAfterProjects.map(project => ({
+    url: `${baseUrl}/gallery/${project.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Cost Guide pages
+  const costGuidePages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/cost-guides`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    ...costGuides.map(guide => ({
+      url: `${baseUrl}/cost-guides/${guide.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+  ];
+
+  // Cost Guide + Area pages
+  const costGuideAreaPages: MetadataRoute.Sitemap = [];
+  for (const guide of costGuides) {
+    for (const areaSlug of areaSlugMap.slice(0, 20)) {
+      costGuideAreaPages.push({
+        url: `${baseUrl}/cost-guides/${guide.slug}/${areaSlug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.75,
+      });
+    }
+  }
+
+  // Case Study pages
+  const caseStudyPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/case-studies`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    ...caseStudies.map(study => ({
+      url: `${baseUrl}/case-studies/${study.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    })),
+  ];
+
+  // Checklist pages
+  const checklistPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/checklists`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    ...checklists.map(checklist => ({
+      url: `${baseUrl}/checklists/${checklist.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    })),
+  ];
+
+  // Decision Guide pages
+  const decisionGuidePages: MetadataRoute.Sitemap = decisionGuides.map(guide => ({
+    url: `${baseUrl}/decisions/${guide.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Borough pages
+  const boroughPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/boroughs`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    ...boroughs.map(borough => ({
+      url: `${baseUrl}/borough/${borough.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+  ];
+
+  // Landlord pages
+  const landlordPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/landlords`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    ...landlordServices.map(service => ({
+      url: `${baseUrl}/landlords/${service.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+  ];
+
+  // Same-day emergency pages
+  const sameDayPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/same-day`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
+    },
+    ...sameDayServices.map(service => ({
+      url: `${baseUrl}/same-day/${service.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
+    })),
+  ];
+
+  // Same-day + Area pages
+  const sameDayAreaPages: MetadataRoute.Sitemap = [];
+  for (const service of sameDayServices) {
+    for (const location of locations.slice(0, 30)) {
+      sameDayAreaPages.push({
+        url: `${baseUrl}/same-day/${service.slug}/${location.slug}`,
+        lastModified: currentDate,
+        changeFrequency: 'daily' as const,
+        priority: 0.9,
+      });
+    }
+  }
+
+  // Package/Plan pages
+  const packagePages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/packages`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    ...maintenancePackages.map(pkg => ({
+      url: `${baseUrl}/packages/${pkg.slug}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    })),
+  ];
+
+  // Brand comparison pages
+  const brandComparePages: MetadataRoute.Sitemap = brandComparisons.map(comparison => ({
+    url: `${baseUrl}/compare/${comparison.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Insurance/Compliance pages
+  const insurancePages: MetadataRoute.Sitemap = insuranceServices.map(service => ({
+    url: `${baseUrl}/insurance/${service.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Testimonial category pages
+  const testimonialCatPages: MetadataRoute.Sitemap = testimonialCategories.map(category => ({
+    url: `${baseUrl}/reviews/${category.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  // Property era + service pages
+  const propertyEraPages: MetadataRoute.Sitemap = servicesForPropertyTypes.map(combo => ({
+    url: `${baseUrl}/property-type/${combo.propertySlug}/${combo.serviceSlug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Room + service pages
+  const roomServicePages: MetadataRoute.Sitemap = roomServices.map(rs => ({
+    url: `${baseUrl}/rooms/${rs.roomSlug}/${rs.serviceSlug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Seasonal pages
+  const seasonalServicePages: MetadataRoute.Sitemap = seasons.map(season => ({
+    url: `${baseUrl}/seasonal/${season.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
   // Combine all pages
   return [
     ...staticPages,
@@ -373,5 +595,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...faqHubPages,
     ...reviewsPages,
     ...bookingPages,
+    // 50 SEO Improvements pages
+    ...galleryServicePages,
+    ...costGuidePages,
+    ...costGuideAreaPages,
+    ...caseStudyPages,
+    ...checklistPages,
+    ...decisionGuidePages,
+    ...boroughPages,
+    ...landlordPages,
+    ...sameDayPages,
+    ...sameDayAreaPages,
+    ...packagePages,
+    ...brandComparePages,
+    ...insurancePages,
+    ...testimonialCatPages,
+    ...propertyEraPages,
+    ...roomServicePages,
+    ...seasonalServicePages,
   ];
 }

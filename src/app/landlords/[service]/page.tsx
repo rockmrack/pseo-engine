@@ -1,0 +1,11 @@
+﻿// LANDLORD SERVICE PAGE
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { landlordServices, getLandlordServiceBySlug } from '@/lib/data/landlord-database';
+import { Breadcrumb } from '@/components/navigation/Breadcrumb';
+import { CTASection } from '@/components/pseo';
+interface PageProps { params: Promise<{ service: string }>; }
+export async function generateStaticParams() { return landlordServices.map((s) => ({ service: s.slug })); }
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> { const rp = await params; const s = getLandlordServiceBySlug(rp.service); if (!s) return { title: 'Not Found' }; return { title: s.name, description: s.description }; }
+export default async function LandlordServicePage({ params }: PageProps) { const rp = await params; const service = getLandlordServiceBySlug(rp.service); if (!service) notFound(); const bc = [{ name: 'Home', href: '/' }, { name: 'Landlords', href: '/landlords' }, { name: service.name, href: '/landlords/' + rp.service, current: true }]; return (<main className="min-h-screen"><section className="bg-gradient-to-br from-blue-900 to-slate-800 text-white py-16"><div className="container mx-auto px-4"><Breadcrumb items={bc} className="mb-6" /><h1 className="text-4xl font-bold mb-4">{service.name}</h1><p className="text-xl mb-6">{service.description}</p></div></section><section className="py-16 bg-white"><div className="container mx-auto px-4"><h2 className="text-3xl font-bold mb-8">Benefits</h2><ul className="grid md:grid-cols-2 gap-4">{service.benefits.map((b, i) => <li key={i} className="p-4 bg-slate-50 rounded">{b}</li>)}</ul></div></section><section className="py-16 bg-slate-50"><div className="container mx-auto px-4"><h2 className="text-3xl font-bold mb-8">Included</h2><ul className="grid md:grid-cols-2 gap-4">{service.includedServices.map((x, i) => <li key={i} className="p-4 bg-white rounded">{x}</li>)}</ul></div></section><CTASection cta={{ headline: 'Book ' + service.name, subtext: 'Professional service for London landlords.', buttonText: 'Book Now', phoneNumber: '020 8000 0000' }} /></main>); }

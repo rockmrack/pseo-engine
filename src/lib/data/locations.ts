@@ -1175,6 +1175,9 @@ export function getLocationBySlug(slug: string): Location | undefined {
   return locations.find(l => l.slug === slug);
 }
 
+// Alias for page compatibility
+export const getLocation = getLocationBySlug;
+
 // Helper function to get locations by area
 export function getLocationsByArea(area: string): Location[] {
   return locations.filter(l => l.area.toLowerCase() === area.toLowerCase());

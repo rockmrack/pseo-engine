@@ -94,16 +94,24 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
-        {/* Resource hints for 5x performance improvement */}
+        {/* ============================================================= */}
+        {/* PERFORMANCE OPTIMIZATIONS - 50 SEO IMPROVEMENTS              */}
+        {/* ============================================================= */}
+        
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
         
-        {/* Preconnect to critical origins */}
+        {/* Preconnect to critical origins for faster connections */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://va.vercel-scripts.com" crossOrigin="anonymous" />
         
-        {/* Preload critical assets */}
+        {/* Preload critical assets for faster rendering */}
         <link 
           rel="preload" 
           href="/icon.svg" 
@@ -116,6 +124,15 @@ export default function RootLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        
+        {/* Content freshness - Last modified hint for search engines */}
+        <meta name="revisit-after" content="7 days" />
+        
+        {/* Geographic targeting for local SEO */}
+        <meta name="geo.region" content="GB-LND" />
+        <meta name="geo.placename" content="London" />
+        <meta name="geo.position" content="51.5505;-0.1664" />
+        <meta name="ICBM" content="51.5505, -0.1664" />
       </head>
       <body className="min-h-screen flex flex-col">
         <AggregateReviewSchema />
