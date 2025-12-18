@@ -3,6 +3,10 @@ import { locations } from '@/lib/data/locations';
 import { services } from '@/lib/data/services';
 import { serviceAreas } from '@/lib/data/areas';
 import { blogPosts } from '@/lib/data/blog-templates';
+import { postcodeClusters } from '@/lib/data/postcode-clusters';
+import { neighborhoodHubs } from '@/lib/data/neighborhood-hubs';
+import { landmarks } from '@/lib/data/landmarks';
+import { emergencyServices, emergencyAreas } from '@/lib/data/emergency-services';
 import { BASE_URL } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -126,6 +130,60 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // ============================================================================
+  // NEW pSEO PAGE TYPES FOR 10x SEO DOMINATION
+  // ============================================================================
+
+  // Postcode cluster pages (NW3, NW6, N6, etc.)
+  const postcodePages: MetadataRoute.Sitemap = postcodeClusters.map(cluster => ({
+    url: `${baseUrl}/postcodes/${cluster.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  // Neighborhood hub pages (comprehensive area guides)
+  const neighborhoodPages: MetadataRoute.Sitemap = neighborhoodHubs.map(hub => ({
+    url: `${baseUrl}/neighborhoods/${hub.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  // Emergency service pages (high-intent searches)
+  const emergencyPages: MetadataRoute.Sitemap = [];
+  for (const emergency of emergencyServices) {
+    for (const area of emergencyAreas) {
+      emergencyPages.push({
+        url: `${baseUrl}/emergency/${emergency.slug}/${area.slug}`,
+        lastModified: currentDate,
+        changeFrequency: 'daily' as const, // High priority for emergency pages
+        priority: 0.95, // Highest priority for high-intent emergency searches
+      });
+    }
+  }
+
+  // Near landmark pages (proximity searches like "plumber near hampstead heath")
+  const nearLandmarkPages: MetadataRoute.Sitemap = [];
+  // Select top services for landmark combinations
+  const topServices = services.filter(s => 
+    ['plumbing', 'electrical', 'heating'].includes(s.category) ||
+    s.slug.includes('boiler') || 
+    s.slug.includes('bathroom') ||
+    s.slug.includes('kitchen')
+  ).slice(0, 15);
+  
+  for (const landmark of landmarks) {
+    for (const service of topServices) {
+      nearLandmarkPages.push({
+        url: `${baseUrl}/near/${landmark.slug}/${service.slug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.75,
+      });
+    }
+  }
+
   // Combine all pages
   return [
     ...staticPages,
@@ -137,5 +195,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pseoPages,
     ...blogPages,
     ...galleryPages,
+    // New 10x SEO pages
+    ...postcodePages,
+    ...neighborhoodPages,
+    ...emergencyPages,
+    ...nearLandmarkPages,
   ];
 }
