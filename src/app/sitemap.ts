@@ -7,6 +7,12 @@ import { postcodeClusters } from '@/lib/data/postcode-clusters';
 import { neighborhoodHubs } from '@/lib/data/neighborhood-hubs';
 import { landmarks } from '@/lib/data/landmarks';
 import { emergencyServices, emergencyAreas } from '@/lib/data/emergency-services';
+// 5x SEO Domination imports
+import { generateSeasonalParams } from '@/lib/data/seasonal-services';
+import { generateComparisonParams } from '@/lib/data/comparison-pages';
+import { generateProblemParams } from '@/lib/data/problems-database';
+import { generatePropertyServiceParams } from '@/lib/data/property-matrix';
+import { generateTrustParams } from '@/lib/data/trust-pages';
 import { BASE_URL } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -184,6 +190,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // ============================================================================
+  // 5x SEO DOMINATION - NEW PAGE TYPES
+  // ============================================================================
+
+  // Seasonal service pages (e.g., "winter boiler service in hampstead")
+  const seasonalParams = generateSeasonalParams();
+  const seasonalPages: MetadataRoute.Sitemap = seasonalParams.map(p => ({
+    url: `${baseUrl}/seasons/${p.season}/${p.service}/${p.area}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
+  // Comparison pages (e.g., "combi vs system boiler")
+  const comparisonParams = generateComparisonParams();
+  const comparisonPages: MetadataRoute.Sitemap = comparisonParams.map(p => ({
+    url: `${baseUrl}/compare/${p.comparison}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Problem/solution pages (e.g., "radiator not heating up")
+  const problemParams = generateProblemParams();
+  const problemPages: MetadataRoute.Sitemap = problemParams.map(p => ({
+    url: `${baseUrl}/problems/${p.problem}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Property-service matrix pages (e.g., "rewiring victorian terraced house")
+  const propertyServiceParams = generatePropertyServiceParams();
+  const propertyServicePages: MetadataRoute.Sitemap = propertyServiceParams.map(p => ({
+    url: `${baseUrl}/property-services/${p.buildingType}/${p.service}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Trust/recommendation pages (e.g., "trusted builders in hampstead")
+  const trustParams = generateTrustParams();
+  const trustAreaPages: MetadataRoute.Sitemap = trustParams.map(p => ({
+    url: `${baseUrl}/trusted-in/${p.area}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
   // Combine all pages
   return [
     ...staticPages,
@@ -200,5 +255,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...neighborhoodPages,
     ...emergencyPages,
     ...nearLandmarkPages,
+    // 5x SEO Domination pages
+    ...seasonalPages,
+    ...comparisonPages,
+    ...problemPages,
+    ...propertyServicePages,
+    ...trustAreaPages,
   ];
 }
