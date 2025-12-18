@@ -1,6 +1,6 @@
-'use client';
+// Server Component - No 'use client' for zero JS bundle impact
+// CSS animations replace framer-motion (~140KB saved)
 
-import { motion } from 'framer-motion';
 import { CheckCircle, Phone, Clipboard, Wrench, Shield } from 'lucide-react';
 import { ProcessStep } from '@/types';
 
@@ -30,35 +30,27 @@ export function ServiceDetailSection({
     <section className="section bg-white">
       <div className="container-lg">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          {/* Content - CSS animation */}
+          <div className="animate-fade-in-up">
             <h2 className="heading-2 text-navy-900 mb-6">{title}</h2>
 
             <div className="prose prose-lg prose-navy max-w-none mb-8">
               <p className="body-large text-navy-700 leading-relaxed">{body}</p>
             </div>
 
-            {/* Benefits List */}
+            {/* Benefits List - staggered via CSS */}
             <div className="space-y-4 mb-8">
               {bulletPoints.map((point, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-3 animate-fade-in-left"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="w-6 h-6 bg-gold-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <CheckCircle className="w-4 h-4 text-gold-600" />
                   </div>
                   <span className="text-navy-700">{point}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
 
@@ -69,26 +61,18 @@ export function ServiceDetailSection({
                 <span className="text-2xl font-bold text-navy-900">{priceAnchor}</span>
               </div>
             )}
-          </motion.div>
+          </div>
 
-          {/* Process Steps */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          {/* Process Steps - CSS animation */}
+          <div className="animate-fade-in-up animation-delay-200">
             <h3 className="heading-4 text-navy-900 mb-8">How It Works</h3>
 
             <div className="space-y-6">
               {processSteps.map((step, index) => (
-                <motion.div
+                <div
                   key={step.number}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="relative flex gap-4"
+                  className="relative flex gap-4 animate-fade-in-right"
+                  style={{ animationDelay: `${(index + 2) * 100}ms` }}
                 >
                   {/* Connector Line */}
                   {index < processSteps.length - 1 && (
@@ -105,10 +89,10 @@ export function ServiceDetailSection({
                     <h4 className="font-semibold text-navy-900 mb-1">{step.title}</h4>
                     <p className="text-navy-600 text-sm">{step.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

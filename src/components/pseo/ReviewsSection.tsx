@@ -115,7 +115,7 @@ function ReviewCard({ review }: { review: Review }) {
       {review.response && (
         <div className="mt-4 bg-gray-50 rounded-lg p-4">
           <span className="text-sm font-medium text-gray-900">Our Response:</span>
-          <p className="text-sm text-gray-600 mt-1">{review.response}</p>
+          <p className="text-sm text-gray-600 mt-1">{review.response.text}</p>
         </div>
       )}
     </div>
@@ -146,7 +146,7 @@ export function ReviewsSection({
     reviews = aggregatedReviews;
   }
   
-  const { averageRating, totalReviews } = getAggregatedRating();
+  const { rating: averageRating, totalReviews } = getAggregatedRating();
   const displayedReviews = showAll ? reviews : reviews.slice(0, maxReviews);
   
   return (

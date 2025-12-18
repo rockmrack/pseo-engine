@@ -1,9 +1,8 @@
-'use client';
+// Server Component - No 'use client' directive for zero JS bundle impact
+// CSS animations replace framer-motion (~140KB saved)
 
-import { motion } from 'framer-motion';
 import { Phone, MapPin, Star, Shield, Clock, CheckCircle } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
-import { cn } from '@/lib/utils';
 
 interface HeroSectionProps {
   h1: string;
@@ -35,12 +34,8 @@ export function HeroSection({
 
       <div className="container-lg relative py-16 md:py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          {/* Content - CSS animation instead of framer-motion */}
+          <div className="animate-fade-in-up">
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-2 mb-6">
               {trustBadges.map((badge, index) => (
@@ -113,15 +108,10 @@ export function HeroSection({
                 <div className="text-sm text-navy-300">Response Time</div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Image/Map Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="hidden lg:block"
-          >
+          {/* Image/Map Placeholder - CSS animation */}
+          <div className="hidden lg:block animate-fade-in-right animation-delay-200">
             <div className="relative">
               {/* Main Image */}
               <div className="aspect-[4/3] bg-navy-700 rounded-2xl overflow-hidden shadow-luxury">
@@ -146,7 +136,7 @@ export function HeroSection({
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

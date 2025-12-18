@@ -1,6 +1,6 @@
-'use client';
+// Server Component - No 'use client' for zero JS bundle impact
+// CSS animations replace framer-motion (~140KB saved)
 
-import { motion } from 'framer-motion';
 import { Phone, ArrowRight, Clock, MapPin } from 'lucide-react';
 import { CTAContent } from '@/types';
 import { siteConfig } from '@/lib/config';
@@ -20,12 +20,8 @@ export function CTASection({ cta }: CTASectionProps) {
 
       <div className="container-lg relative">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          {/* CSS animation instead of framer-motion */}
+          <div className="animate-fade-in-up">
             {/* Urgency Badge */}
             {cta.urgencyText && (
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold-500 text-navy-900 rounded-full text-sm font-medium mb-6">
@@ -49,7 +45,7 @@ export function CTASection({ cta }: CTASectionProps) {
               >
                 <Phone className="w-5 h-5 mr-2" />
                 {cta.buttonText}
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 ml-2 group-hover-arrow" />
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
@@ -77,7 +73,7 @@ export function CTASection({ cta }: CTASectionProps) {
                 <div className="text-sm text-navy-300">Mon-Fri</div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

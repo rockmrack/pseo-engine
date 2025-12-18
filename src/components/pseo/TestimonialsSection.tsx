@@ -1,6 +1,6 @@
-'use client';
+// Server Component - No 'use client' for zero JS bundle impact
+// CSS animations replace framer-motion (~140KB saved)
 
-import { motion } from 'framer-motion';
 import { Star, Quote, CheckCircle } from 'lucide-react';
 import { Testimonial } from '@/types';
 
@@ -35,26 +35,18 @@ export function TestimonialsSection({
   return (
     <section className="section bg-white">
       <div className="container-lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
+        {/* CSS animation instead of framer-motion */}
+        <div className="text-center mb-12 animate-fade-in-up">
           <h2 className="heading-3 text-navy-900 mb-4">{title}</h2>
           <p className="body-large text-navy-600 max-w-2xl mx-auto">{subtitle}</p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="card p-6 relative"
+              className="card p-6 relative animate-fade-in-up hover-lift"
+              style={{ animationDelay: `${(index + 1) * 100}ms` }}
             >
               {/* Quote Icon */}
               <div className="absolute top-4 right-4 text-cream-200">
@@ -93,18 +85,12 @@ export function TestimonialsSection({
               <div className="mt-4">
                 <span className="badge badge-gold text-xs">{testimonial.service}</span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        {/* Google Reviews Link */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-10"
-        >
+        {/* Google Reviews Link - CSS animation */}
+        <div className="text-center mt-10 animate-fade-in-up animation-delay-400">
           <div className="inline-flex items-center gap-4 px-6 py-4 bg-cream-100 rounded-xl">
             <div className="flex items-center gap-1">
               <Star className="w-5 h-5 text-gold-400 fill-gold-400" />
@@ -115,7 +101,7 @@ export function TestimonialsSection({
               View all →
             </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

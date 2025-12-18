@@ -1,6 +1,6 @@
-'use client';
+// Server Component - No 'use client' for zero JS bundle impact
+// CSS animations replace framer-motion (~140KB saved)
 
-import { motion } from 'framer-motion';
 import { MapPin, Navigation, Clock, Phone } from 'lucide-react';
 import { Location } from '@/types';
 import { siteConfig, GOOGLE_MAPS_API_KEY } from '@/lib/config';
@@ -30,14 +30,8 @@ export function LocalMapSection({ location }: LocalMapSectionProps) {
     <section className="section bg-cream-50">
       <div className="container-lg">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Map */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="aspect-[4/3] bg-cream-200 rounded-2xl overflow-hidden shadow-lg"
-          >
+          {/* Map - CSS animation instead of framer-motion */}
+          <div className="aspect-[4/3] bg-cream-200 rounded-2xl overflow-hidden shadow-lg animate-fade-in-left">
             {mapEmbedUrl ? (
               <iframe
                 src={mapEmbedUrl}
@@ -58,15 +52,10 @@ export function LocalMapSection({ location }: LocalMapSectionProps) {
                 </div>
               </div>
             )}
-          </motion.div>
+          </div>
 
-          {/* Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          {/* Info - CSS animation */}
+          <div className="animate-fade-in-right animation-delay-200">
             <h2 className="heading-3 text-navy-900 mb-4">
               Local to {location.name}
             </h2>
@@ -144,12 +133,11 @@ export function LocalMapSection({ location }: LocalMapSectionProps) {
               href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline w-full sm:w-auto"
-            >
+              className="btn-outline w-full sm:w-auto">
               <Navigation className="w-4 h-4 mr-2" />
               Get Directions from Our Office
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

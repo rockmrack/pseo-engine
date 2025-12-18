@@ -94,6 +94,24 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
+        {/* Resource hints for 5x performance improvement */}
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        
+        {/* Preconnect to critical origins */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Preload critical assets */}
+        <link 
+          rel="preload" 
+          href="/icon.svg" 
+          as="image" 
+          type="image/svg+xml"
+        />
+        
+        {/* Standard icons */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

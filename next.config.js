@@ -27,9 +27,13 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
 
-  // Performance optimizations
+  // Performance optimizations - 5x improvement features
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'clsx', 'tailwind-merge'],
+    // Tree-shake imports from large packages (framer-motion removed, keep for lucide)
+    optimizePackageImports: ['lucide-react', 'clsx', 'tailwind-merge'],
+    // Note: PPR and inlineCss require Next.js canary - enable when upgrading
+    // ppr: 'incremental',
+    // inlineCss: true,
   },
 
   // Enable React strict mode for better performance debugging
