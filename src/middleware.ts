@@ -1,13 +1,17 @@
-// ============================================================================
+﻿// ============================================================================
 // PSEO ENGINE - EDGE MIDDLEWARE ENTRY POINT
-// Applies all edge optimizations: geo-routing, A/B testing, caching
 // ============================================================================
 
 import { NextRequest, NextResponse } from 'next/server';
-import { edgeMiddleware, middlewareConfig } from '@/lib/edge-middleware';
+import { edgeMiddleware } from '@/lib/edge-middleware';
 
 export function middleware(request: NextRequest): NextResponse {
   return edgeMiddleware(request);
 }
 
-export const config = middlewareConfig;
+// Next.js requires `config` to be a literal object (not a variable reference).
+export const config = {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+  ],
+};
