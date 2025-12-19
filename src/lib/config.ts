@@ -30,9 +30,13 @@ export const siteConfig: SiteConfig = {
     emergency: '24/7 Emergency callout available',
   },
   serviceArea: {
-    primary: ['NW3', 'NW6', 'NW8', 'NW11', 'N2', 'N6', 'NW1'],
-    secondary: ['N3', 'N10', 'NW2', 'NW4', 'NW7', 'NW9', 'W9', 'W11'],
-    radius: 8, // miles
+    // PRIMARY: Core Hampstead & NW London - 10 minute response
+    primary: ['NW3', 'NW6', 'NW8', 'NW11', 'N2', 'N6', 'NW1', 'NW5'],
+    // SECONDARY: Extended North West London - 20 minute response  
+    secondary: ['N3', 'N10', 'NW2', 'NW4', 'NW7', 'NW9', 'NW10', 'W9', 'W11', 'N1', 'N5', 'N8'],
+    // TERTIARY: Greater North London coverage - 30 minute response
+    tertiary: ['N4', 'N7', 'N9', 'N11', 'N12', 'N13', 'N14', 'N15', 'N16', 'N17', 'N18', 'N19', 'N20', 'N21', 'N22'],
+    radius: 12, // miles - expanded coverage
   },
 };
 

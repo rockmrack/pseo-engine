@@ -678,6 +678,7 @@ The Victorian housing stock offers great renovation potential, with many buyers 
     metaDescription: 'Professional home renovation services in West Hampstead NW6. Victorian property experts, boiler installation, and electrical work. Call 07459 345456.',
     h1: 'Expert Home Services in West Hampstead, NW6',
     
+    
     demographics: {
       population: '~12,000',
       avgPropertyPrice: '£750,000',
@@ -747,6 +748,825 @@ The property mix of period conversions and new developments creates varied renov
     
     adjacentAreas: ['hampstead', 'kilburn', 'swiss-cottage', 'brondesbury', 'finchley-road'],
   },
+  // ============================================================================
+  // 100x SEO EXPANSION - NORTH LONDON NEIGHBORHOOD HUBS
+  // ============================================================================
+  {
+    slug: 'golders-green',
+    name: 'Golders Green',
+    postcodes: ['NW11'],
+    borough: 'Barnet',
+    description: 'Golders Green is a thriving suburban centre with excellent Northern Line connections, diverse community, and proximity to Hampstead Heath Extension.',
+    
+    metaTitle: 'Home Services in Golders Green NW11 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Expert home renovation services in Golders Green NW11. Local plumbers, electricians, and builders. Family home specialists. Call 07459 345456.',
+    h1: 'Expert Home Services in Golders Green, NW11',
+    
+    demographics: {
+      population: '~22,000',
+      avgPropertyPrice: '£950,000',
+      predominantPropertyTypes: ['1930s semis', 'Edwardian houses', 'Arts & Crafts properties', 'Purpose-built flats'],
+      affluenceLevel: 'Affluent',
+    },
+    
+    history: `Golders Green was largely rural until the Northern Line arrived in 1907, triggering rapid suburban development. The area became popular with Jewish families relocating from the East End, establishing synagogues, kosher shops, and community centres.
+
+The Golders Green Hippodrome, built in 1913, hosted BBC concerts for decades. Golders Green Crematorium, opened in 1902, is Britain's first crematorium and final resting place of many notable figures.`,
+    
+    character: `Today's Golders Green has a distinctive character with its strong Jewish community, bustling high street, and mix of independent shops alongside chain stores. The area offers excellent schools, good transport links, and access to green spaces.
+
+Properties range from grand Arts & Crafts houses in Hampstead Garden Suburb to 1930s family homes and modern apartments, creating diverse renovation requirements.`,
+    
+    landmarks: [
+      'Golders Green Station',
+      'Golders Green Hippodrome',
+      'Golders Green Crematorium',
+      'Hampstead Garden Suburb',
+    ],
+    
+    parks: [
+      'Golders Hill Park',
+      'Hampstead Heath Extension',
+      'Childs Hill Park',
+    ],
+    
+    transport: {
+      stations: ['Golders Green Underground (Northern Line)'],
+      buses: ['13', '82', '102', '183', '210', '226', '240', '245', '260', '328', '460'],
+      travelZone: 'Zone 3',
+    },
+    
+    council: {
+      name: 'London Borough of Barnet',
+      planningPortal: 'https://www.barnet.gov.uk/planning-and-building',
+      conservationAreas: ['Hampstead Garden Suburb Conservation Area'],
+      articleFourAreas: ['Hampstead Garden Suburb'],
+    },
+    
+    topServices: [
+      'boiler-installation',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'extension-building',
+      'electrical-rewiring',
+      'central-heating',
+    ],
+    
+    commonIssues: [
+      '1930s property insulation upgrades',
+      'Period window restoration in Garden Suburb',
+      'Central heating system upgrades',
+      'Kitchen modernisation in family homes',
+      'Loft conversions for additional bedrooms',
+      'Garden landscaping and maintenance',
+    ],
+    
+    coveredStreets: [
+      'golders-green-road',
+      'finchley-road',
+      'north-end-road',
+      'hoop-lane',
+      'hampstead-way',
+    ],
+    
+    adjacentAreas: ['hampstead', 'childs-hill', 'temple-fortune', 'finchley', 'cricklewood'],
+  },
+  {
+    slug: 'finchley',
+    name: 'Finchley',
+    postcodes: ['N2', 'N3', 'N12'],
+    borough: 'Barnet',
+    description: 'Finchley comprises East Finchley, Finchley Central, and North Finchley - established suburban areas with excellent schools, Northern Line access, and family-friendly atmosphere.',
+    
+    metaTitle: 'Home Services in Finchley N2, N3, N12 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Professional home renovation services across Finchley. 1930s and Victorian specialists. Boilers, kitchens, extensions. Call 07459 345456.',
+    h1: 'Expert Home Services Across Finchley, N2, N3 & N12',
+    
+    demographics: {
+      population: '~65,000',
+      avgPropertyPrice: '£700,000',
+      predominantPropertyTypes: ['1930s semis', 'Victorian terraces', 'Edwardian houses', 'Modern developments'],
+      affluenceLevel: 'Upper-middle',
+    },
+    
+    history: `Finchley's name derives from "Finch's clearing" and the area remained rural until the 19th century. The arrival of the Northern Line transformed each centre - East Finchley in 1867 (Great Northern Railway), Finchley Central in 1872, and North Finchley developing as a commercial hub.
+
+East Finchley station, with its famous archer statue by Eric Aumonier, is a Grade II listed Art Deco gem. The area was home to Manor House Hospital and retains many fine period properties.`,
+    
+    character: `Each part of Finchley has its own character. East Finchley has an artistic, village feel with independent shops and proximity to Highgate Wood. Finchley Central offers excellent shopping and 1930s suburban housing. North Finchley is more commercial with a diverse high street.
+
+The housing stock offers varied renovation opportunities from Victorian restoration to 1930s modernisation projects.`,
+    
+    landmarks: [
+      'East Finchley Station (Art Deco)',
+      'Phoenix Cinema',
+      'Stephens House & Gardens',
+      'Victoria Park',
+      'Finchley Central Station',
+    ],
+    
+    parks: [
+      'Victoria Park',
+      'Cherry Tree Wood',
+      'Highgate Wood',
+      'Glebelands',
+      'Long Lane Pasture',
+    ],
+    
+    transport: {
+      stations: ['East Finchley Underground', 'Finchley Central Underground', 'West Finchley Underground', 'Woodside Park Underground'],
+      buses: ['143', '234', '263', '382', '460'],
+      travelZone: 'Zone 3-4',
+    },
+    
+    council: {
+      name: 'London Borough of Barnet',
+      planningPortal: 'https://www.barnet.gov.uk/planning-and-building',
+      conservationAreas: ['East Finchley Conservation Area'],
+      articleFourAreas: [],
+    },
+    
+    topServices: [
+      'boiler-installation',
+      'central-heating',
+      'extension-building',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'loft-conversion',
+    ],
+    
+    commonIssues: [
+      '1930s property modernisation',
+      'Central heating efficiency upgrades',
+      'Loft conversions in semi-detached homes',
+      'Period feature restoration in Victorian properties',
+      'Double glazing upgrades',
+      'Kitchen extensions for family living',
+    ],
+    
+    coveredStreets: [
+      'high-road-finchley',
+      'east-end-road',
+      'ballards-lane',
+      'regent-park-road',
+      'church-lane',
+    ],
+    
+    adjacentAreas: ['highgate', 'muswell-hill', 'whetstone', 'hendon', 'friern-barnet'],
+  },
+  {
+    slug: 'muswell-hill',
+    name: 'Muswell Hill',
+    postcodes: ['N10'],
+    borough: 'Haringey',
+    description: 'Muswell Hill is one of North London\'s most sought-after areas, famous for its stunning Edwardian housing, Broadway shopping centre, and views towards Alexandra Palace.',
+    
+    metaTitle: 'Home Services in Muswell Hill N10 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Expert home renovation in Muswell Hill N10. Edwardian property specialists. Loft conversions, kitchens, period restoration. Call 07459 345456.',
+    h1: 'Expert Home Services in Muswell Hill, N10',
+    
+    demographics: {
+      population: '~20,000',
+      avgPropertyPrice: '£900,000',
+      predominantPropertyTypes: ['Edwardian houses', 'Victorian terraces', '1930s semis', 'Period conversions'],
+      affluenceLevel: 'Affluent',
+    },
+    
+    history: `Muswell Hill takes its name from a mossy well said to have miraculous healing properties. The area remained rural until the 1890s when developers built grand Edwardian houses following the arrival of tramways.
+
+Alexandra Palace, "Ally Pally," opened in 1873 as North London's answer to Crystal Palace. The BBC made its first television broadcast from here in 1936. The distinctive clock tower and panoramic views make it a beloved landmark.`,
+    
+    character: `Muswell Hill has retained its Edwardian village character with tree-lined streets of handsome houses, independent shops along the Broadway, and a strong community feel. The Everyman Cinema and numerous cafes contribute to the area's appeal.
+
+Properties are predominantly large family homes requiring specialist renovation skills for period features, while offering excellent opportunities for extensions and loft conversions.`,
+    
+    landmarks: [
+      'Alexandra Palace',
+      'Muswell Hill Broadway',
+      'Everyman Cinema',
+      'St James Church',
+      'The Clissold Arms',
+    ],
+    
+    parks: [
+      'Alexandra Park',
+      'Highgate Wood',
+      'Queens Wood',
+      'Coldfall Wood',
+    ],
+    
+    transport: {
+      stations: ['Highgate Underground (Northern Line)', 'Alexandra Palace (Overground)'],
+      buses: ['43', '134', '234', '299', 'W3', 'W7'],
+      travelZone: 'Zone 3',
+    },
+    
+    council: {
+      name: 'London Borough of Haringey',
+      planningPortal: 'https://www.haringey.gov.uk/planning',
+      conservationAreas: ['Muswell Hill Conservation Area', 'Alexandra Palace Conservation Area'],
+      articleFourAreas: ['Parts of Muswell Hill'],
+    },
+    
+    topServices: [
+      'loft-conversion',
+      'extension-building',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'period-restoration',
+      'sash-window-repair',
+    ],
+    
+    commonIssues: [
+      'Edwardian property maintenance',
+      'Loft conversions maintaining character',
+      'Period window restoration',
+      'Central heating in large houses',
+      'Kitchen extensions',
+      'Garden landscaping',
+    ],
+    
+    coveredStreets: [
+      'muswell-hill-broadway',
+      'colney-hatch-lane',
+      'queens-avenue',
+      'fortis-green',
+      'alexandra-park-road',
+    ],
+    
+    adjacentAreas: ['highgate', 'crouch-end', 'alexandra-park', 'east-finchley', 'friern-barnet'],
+  },
+  {
+    slug: 'crouch-end',
+    name: 'Crouch End',
+    postcodes: ['N8'],
+    borough: 'Haringey',
+    description: 'Crouch End is a vibrant, creative neighbourhood with a thriving Broadway, excellent restaurants, and beautiful Victorian architecture - popular with young families and media professionals.',
+    
+    metaTitle: 'Home Services in Crouch End N8 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Professional home renovation in Crouch End N8. Victorian terrace specialists. Extensions, loft conversions, kitchens. Call 07459 345456.',
+    h1: 'Expert Home Services in Crouch End, N8',
+    
+    demographics: {
+      population: '~30,000',
+      avgPropertyPrice: '£850,000',
+      predominantPropertyTypes: ['Victorian terraces', 'Edwardian houses', 'Period conversions', 'Mansion blocks'],
+      affluenceLevel: 'Upper-middle',
+    },
+    
+    history: `Crouch End developed rapidly in the Victorian era, with speculative builders creating rows of handsome terraced houses for middle-class families. The area's name comes from "crux" meaning cross, referring to the crossroads at the centre.
+
+The distinctive Clock Tower, built in 1895, remains the focal point. The area has long attracted creative types - it features in works by Bram Stoker and Stephen King.`,
+    
+    character: `Today's Crouch End is known for its village atmosphere, independent boutiques, organic cafes, and strong community spirit. The Broadway hosts weekly farmers' markets, and the Hornsey Town Hall Arts Centre offers cultural events.
+
+Victorian terraces dominate, offering excellent opportunities for sympathetic renovation, extensions, and loft conversions while preserving period character.`,
+    
+    landmarks: [
+      'Crouch End Clock Tower',
+      'Hornsey Town Hall',
+      'Parkland Walk',
+      'The Kings Head',
+    ],
+    
+    parks: [
+      'Priory Park',
+      'Parkland Walk',
+      'Highgate Wood',
+      'Queens Wood',
+    ],
+    
+    transport: {
+      stations: ['Crouch Hill (Overground)', 'Hornsey (Overground)'],
+      buses: ['41', 'W3', 'W7', '91'],
+      travelZone: 'Zone 3',
+    },
+    
+    council: {
+      name: 'London Borough of Haringey',
+      planningPortal: 'https://www.haringey.gov.uk/planning',
+      conservationAreas: ['Crouch End Conservation Area'],
+      articleFourAreas: [],
+    },
+    
+    topServices: [
+      'loft-conversion',
+      'extension-building',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'underfloor-heating',
+      'period-restoration',
+    ],
+    
+    commonIssues: [
+      'Victorian terrace renovation',
+      'Rear extensions and side returns',
+      'Loft conversions',
+      'Period feature restoration',
+      'Central heating upgrades',
+      'Basement conversions',
+    ],
+    
+    coveredStreets: [
+      'park-road',
+      'middle-lane',
+      'crouch-hill',
+      'tottenham-lane',
+      'ferme-park-road',
+    ],
+    
+    adjacentAreas: ['hornsey', 'stroud-green', 'highgate', 'muswell-hill', 'finsbury-park'],
+  },
+  {
+    slug: 'islington',
+    name: 'Islington',
+    postcodes: ['N1'],
+    borough: 'Islington',
+    description: 'Islington is one of London\'s most fashionable areas, famous for its Georgian townhouses, trendy Upper Street, and cultural venues including the Almeida Theatre and Sadler\'s Wells.',
+    
+    metaTitle: 'Home Services in Islington N1 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Premium home renovation in Islington N1. Georgian property experts. Period restoration, kitchens, bathrooms. Call 07459 345456.',
+    h1: 'Expert Home Services in Islington, N1',
+    
+    demographics: {
+      population: '~50,000',
+      avgPropertyPrice: '£900,000',
+      predominantPropertyTypes: ['Georgian townhouses', 'Victorian terraces', 'Period conversions', 'Warehouse apartments'],
+      affluenceLevel: 'Affluent',
+    },
+    
+    history: `Islington's history stretches back to medieval times when it was a stopping point on the Great North Road. Georgian developers created the elegant squares and terraces that define the area today, including Canonbury Square and Barnsbury.
+
+The area declined in the Victorian era but underwent dramatic gentrification from the 1960s onwards, transforming from working-class to one of London's most desirable postcodes.`,
+    
+    character: `Modern Islington combines Georgian elegance with contemporary culture. Upper Street offers excellent restaurants, bars, and antique shops. The Angel area buzzes with activity while quieter residential streets retain their period charm.
+
+Properties range from grand Georgian townhouses to Victorian terraces and converted warehouses, each requiring specialist renovation approaches.`,
+    
+    landmarks: [
+      'Angel Underground Station',
+      'Chapel Market',
+      'Business Design Centre',
+      'Almeida Theatre',
+      'Sadler\'s Wells',
+      'Camden Passage Antiques',
+    ],
+    
+    parks: [
+      'Highbury Fields',
+      'Canonbury Square Gardens',
+      'Barnsbury Square',
+      'Thornhill Square Garden',
+    ],
+    
+    transport: {
+      stations: ['Angel Underground (Northern Line)', 'Highbury & Islington (Victoria/Overground)'],
+      buses: ['4', '19', '30', '38', '43', '56', '73', '341'],
+      travelZone: 'Zone 1-2',
+    },
+    
+    council: {
+      name: 'London Borough of Islington',
+      planningPortal: 'https://www.islington.gov.uk/planning',
+      conservationAreas: ['Canonbury Conservation Area', 'Barnsbury Conservation Area', 'Duncan Terrace/Colebrooke Row'],
+      articleFourAreas: ['Multiple across Islington'],
+    },
+    
+    topServices: [
+      'period-restoration',
+      'sash-window-repair',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'electrical-rewiring',
+      'basement-conversion',
+    ],
+    
+    commonIssues: [
+      'Georgian property restoration',
+      'Listed building requirements',
+      'Period sash window repair',
+      'Basement conversions and waterproofing',
+      'Central heating in period properties',
+      'Kitchen modernisation preserving character',
+    ],
+    
+    coveredStreets: [
+      'upper-street',
+      'canonbury-square',
+      'barnsbury-street',
+      'liverpool-road',
+      'essex-road',
+    ],
+    
+    adjacentAreas: ['highbury', 'angel', 'clerkenwell', 'kings-cross', 'holloway'],
+  },
+  {
+    slug: 'stoke-newington',
+    name: 'Stoke Newington',
+    postcodes: ['N16'],
+    borough: 'Hackney',
+    description: 'Stoke Newington is a trendy, creative neighbourhood known for its village atmosphere, Church Street\'s independent shops, and beautiful Victorian architecture.',
+    
+    metaTitle: 'Home Services in Stoke Newington N16 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Expert home renovation in Stoke Newington N16. Victorian specialists. Loft conversions, kitchens, period restoration. Call 07459 345456.',
+    h1: 'Expert Home Services in Stoke Newington, N16',
+    
+    demographics: {
+      population: '~40,000',
+      avgPropertyPrice: '£800,000',
+      predominantPropertyTypes: ['Victorian terraces', 'Georgian houses', 'Period conversions', 'Warehouse conversions'],
+      affluenceLevel: 'Upper-middle',
+    },
+    
+    history: `Stoke Newington has been a settlement since Saxon times. The area developed rapidly in the Victorian era, with terraced houses built for middle-class commuters. Literary connections include Daniel Defoe and Edgar Allan Poe who attended school here.
+
+Abney Park Cemetery, opened in 1840, is one of the "Magnificent Seven" Victorian cemeteries and now a nature reserve. The area has attracted creative and progressive residents throughout its history.`,
+    
+    character: `Today's "Stokey" is known for its bohemian atmosphere, independent boutiques, organic cafes, and young creative community. Church Street is the heart of the neighbourhood with farmers' markets and festivals throughout the year.
+
+Victorian terraces offer excellent renovation potential, while warehouse conversions and new developments add contemporary options.`,
+    
+    landmarks: [
+      'Church Street',
+      'Abney Park Cemetery',
+      'Clissold Park',
+      'Old Church (St Mary\'s)',
+      'New Church (St Mary\'s)',
+    ],
+    
+    parks: [
+      'Clissold Park',
+      'Abney Park',
+      'Newington Green',
+      'Stoke Newington Reservoirs',
+    ],
+    
+    transport: {
+      stations: ['Stoke Newington (Overground)', 'Dalston Junction (Overground)'],
+      buses: ['73', '106', '149', '243', '276', '393'],
+      travelZone: 'Zone 2',
+    },
+    
+    council: {
+      name: 'London Borough of Hackney',
+      planningPortal: 'https://hackney.gov.uk/planning',
+      conservationAreas: ['Stoke Newington Conservation Area', 'Church Street Conservation Area'],
+      articleFourAreas: [],
+    },
+    
+    topServices: [
+      'loft-conversion',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'period-restoration',
+      'garden-landscaping',
+      'electrical-rewiring',
+    ],
+    
+    commonIssues: [
+      'Victorian terrace restoration',
+      'Loft conversions in terraces',
+      'Rear extensions and side returns',
+      'Period feature restoration',
+      'Central heating upgrades',
+      'Flat conversion improvements',
+    ],
+    
+    coveredStreets: [
+      'church-street',
+      'stoke-newington-high-street',
+      'albion-road',
+      'clissold-road',
+      'green-lanes',
+    ],
+    
+    adjacentAreas: ['dalston', 'hackney', 'stamford-hill', 'newington-green', 'finsbury-park'],
+  },
+  {
+    slug: 'mill-hill',
+    name: 'Mill Hill',
+    postcodes: ['NW7'],
+    borough: 'Barnet',
+    description: 'Mill Hill is an affluent, leafy suburb with village atmosphere, excellent schools including Mill Hill School, and mix of period properties and modern family homes near green belt land.',
+    
+    metaTitle: 'Home Services in Mill Hill NW7 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Premium home renovation in Mill Hill NW7. Large family home specialists. Extensions, kitchens, bathrooms. Call 07459 345456.',
+    h1: 'Expert Home Services in Mill Hill, NW7',
+    
+    demographics: {
+      population: '~25,000',
+      avgPropertyPrice: '£850,000',
+      predominantPropertyTypes: ['Detached houses', '1930s semis', 'Period properties', 'New builds'],
+      affluenceLevel: 'Affluent',
+    },
+    
+    history: `Mill Hill's name comes from a windmill that stood on The Ridgeway. The area developed as a rural retreat for wealthy Londoners, with Mill Hill School founded in 1807. The village retains its historic character around The Ridgeway.
+
+The Medical Research Institute, established in 1914, is a major employer. Mill Hill remained relatively rural until the Northern Line extension arrived in 1941, though it still borders green belt land.`,
+    
+    character: `Mill Hill combines village character with suburban family living. The Ridgeway offers historic buildings and countryside views, while Mill Hill Broadway provides modern shopping. Excellent schools make it popular with families.
+
+Properties range from period homes requiring sensitive restoration to 1930s semis and new developments, with larger plots allowing substantial extensions.`,
+    
+    landmarks: [
+      'Mill Hill School',
+      'The Ridgeway',
+      'St Joseph\'s College',
+      'Mill Hill Village',
+      'National Institute for Medical Research',
+    ],
+    
+    parks: [
+      'Mill Hill Park',
+      'Arrandene Open Space',
+      'Mill Hill Golf Course',
+      'Totteridge Fields',
+    ],
+    
+    transport: {
+      stations: ['Mill Hill East Underground (Northern Line)', 'Mill Hill Broadway (Thameslink)'],
+      buses: ['221', '240', '382'],
+      travelZone: 'Zone 4',
+    },
+    
+    council: {
+      name: 'London Borough of Barnet',
+      planningPortal: 'https://www.barnet.gov.uk/planning-and-building',
+      conservationAreas: ['Mill Hill Conservation Area'],
+      articleFourAreas: [],
+    },
+    
+    topServices: [
+      'extension-building',
+      'loft-conversion',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'landscaping',
+      'smart-home',
+    ],
+    
+    commonIssues: [
+      'Large property heating systems',
+      'Period feature restoration',
+      'Extension planning in conservation areas',
+      'Garden and grounds maintenance',
+      'Swimming pool installations',
+      'Security systems',
+    ],
+    
+    coveredStreets: [
+      'the-ridgeway',
+      'lawrence-street',
+      'hammers-lane',
+      'holders-hill-road',
+      'page-street',
+    ],
+    
+    adjacentAreas: ['hendon', 'edgware', 'totteridge', 'finchley', 'colindale'],
+  },
+  {
+    slug: 'hendon',
+    name: 'Hendon',
+    postcodes: ['NW4'],
+    borough: 'Barnet',
+    description: 'Hendon is a family-oriented suburb with excellent Northern Line connections, good schools, and mix of housing from 1930s semis to modern developments near Brent Cross.',
+    
+    metaTitle: 'Home Services in Hendon NW4 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Professional home renovation in Hendon NW4. Family home specialists. Boilers, kitchens, extensions. Call 07459 345456.',
+    h1: 'Expert Home Services in Hendon, NW4',
+    
+    demographics: {
+      population: '~35,000',
+      avgPropertyPrice: '£700,000',
+      predominantPropertyTypes: ['1930s semis', 'Detached houses', 'New developments', 'Purpose-built flats'],
+      affluenceLevel: 'Upper-middle',
+    },
+    
+    history: `Hendon's history stretches back to Saxon times with the name meaning "high hill." The area remained rural until the Northern Line arrival in 1923 triggered suburban development. The RAF Museum occupies the site of the famous Hendon Aerodrome.
+
+Middlesex University has a significant presence, while the area's proximity to the M1 and Brent Cross makes it a popular commuter choice.`,
+    
+    character: `Hendon combines suburban family living with excellent transport links. The high street offers local shopping while Brent Cross provides major retail. Good schools and parks make it popular with families.
+
+Housing stock is predominantly interwar suburban homes, offering scope for modernisation, extensions, and energy efficiency improvements.`,
+    
+    landmarks: [
+      'RAF Museum London',
+      'Middlesex University',
+      'Brent Cross Shopping Centre',
+      'Church Farm House Museum',
+    ],
+    
+    parks: [
+      'Sunny Hill Park',
+      'Hendon Park',
+      'West Hendon Playing Fields',
+      'Copthall Sports Centre',
+    ],
+    
+    transport: {
+      stations: ['Hendon Central Underground (Northern Line)', 'Brent Cross Underground'],
+      buses: ['83', '113', '143', '183', '186', '240', '326'],
+      travelZone: 'Zone 3-4',
+    },
+    
+    council: {
+      name: 'London Borough of Barnet',
+      planningPortal: 'https://www.barnet.gov.uk/planning-and-building',
+      conservationAreas: ['Church End Hendon Conservation Area'],
+      articleFourAreas: [],
+    },
+    
+    topServices: [
+      'boiler-installation',
+      'extension-building',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'central-heating',
+      'loft-conversion',
+    ],
+    
+    commonIssues: [
+      '1930s property modernisation',
+      'Central heating efficiency',
+      'Loft conversions',
+      'Kitchen extensions',
+      'Double glazing upgrades',
+      'Driveway and garage conversions',
+    ],
+    
+    coveredStreets: [
+      'queens-road',
+      'brent-street',
+      'church-road',
+      'parson-street',
+      'watford-way',
+    ],
+    
+    adjacentAreas: ['golders-green', 'mill-hill', 'colindale', 'childs-hill', 'cricklewood'],
+  },
+  {
+    slug: 'wood-green',
+    name: 'Wood Green',
+    postcodes: ['N22'],
+    borough: 'Haringey',
+    description: 'Wood Green is a vibrant, multicultural area centred on Shopping City and with views to Alexandra Palace. Victorian and 1930s housing with excellent Piccadilly Line connections.',
+    
+    metaTitle: 'Home Services in Wood Green N22 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Expert home renovation in Wood Green N22. Victorian specialists. Boilers, kitchens, bathrooms, loft conversions. Call 07459 345456.',
+    h1: 'Expert Home Services in Wood Green, N22',
+    
+    demographics: {
+      population: '~40,000',
+      avgPropertyPrice: '£550,000',
+      predominantPropertyTypes: ['Victorian terraces', '1930s houses', 'Converted flats', 'New developments'],
+      affluenceLevel: 'Middle',
+    },
+    
+    history: `Wood Green's name comes from the ancient woodland that once covered the area. Development began in the Victorian era and accelerated with the arrival of the Piccadilly Line in 1932. The iconic Shopping City opened in 1981.
+
+Alexandra Palace, "the People's Palace," has served the area since 1873 and remains a major venue and landmark. Noel Park estate is an important example of Victorian philanthropic housing.`,
+    
+    character: `Today's Wood Green is diverse and evolving, with a busy shopping centre, multicultural restaurants, and improving amenities. The Noel Park area features fine Victorian architecture, while new developments add contemporary housing options.
+
+Properties offer good value compared to neighbouring areas, making it popular with first-time buyers and families, with renovation opportunities across all housing types.`,
+    
+    landmarks: [
+      'Alexandra Palace',
+      'Shopping City',
+      'Noel Park Estate',
+      'Chocolate Factory',
+      'Wood Green Underground',
+    ],
+    
+    parks: [
+      'Alexandra Park',
+      'Ducketts Common',
+      'Lordship Recreation Ground',
+    ],
+    
+    transport: {
+      stations: ['Wood Green Underground (Piccadilly Line)', 'Alexandra Palace (Overground)'],
+      buses: ['29', '67', '121', '184', '221', '230', '232', '329', 'W3', 'W4'],
+      travelZone: 'Zone 3',
+    },
+    
+    council: {
+      name: 'London Borough of Haringey',
+      planningPortal: 'https://www.haringey.gov.uk/planning',
+      conservationAreas: ['Noel Park Conservation Area', 'Alexandra Palace Conservation Area'],
+      articleFourAreas: [],
+    },
+    
+    topServices: [
+      'boiler-repair',
+      'central-heating',
+      'kitchen-fitting',
+      'bathroom-installation',
+      'loft-conversion',
+      'electrical-rewiring',
+    ],
+    
+    commonIssues: [
+      'Victorian terrace maintenance',
+      'Central heating upgrades',
+      'Loft conversions',
+      'Kitchen and bathroom modernisation',
+      'Period feature restoration',
+      'Flat conversion improvements',
+    ],
+    
+    coveredStreets: [
+      'high-road-wood-green',
+      'lordship-lane',
+      'bounds-green-road',
+      'durnsford-road',
+      'white-hart-lane',
+    ],
+    
+    adjacentAreas: ['alexandra-palace', 'bounds-green', 'tottenham', 'hornsey', 'palmers-green'],
+  },
+  {
+    slug: 'tottenham',
+    name: 'Tottenham',
+    postcodes: ['N17', 'N15'],
+    borough: 'Haringey',
+    description: 'Tottenham is undergoing major regeneration around the new Spurs stadium, with Victorian housing stock and new developments creating exciting renovation opportunities.',
+    
+    metaTitle: 'Home Services in Tottenham N17 & N15 | Plumbers & Builders | Hampstead Renovations',
+    metaDescription: 'Professional home renovation in Tottenham. Victorian specialists. Boilers, bathrooms, kitchens, electrical. Call 07459 345456.',
+    h1: 'Expert Home Services in Tottenham, N17 & N15',
+    
+    demographics: {
+      population: '~80,000',
+      avgPropertyPrice: '£475,000',
+      predominantPropertyTypes: ['Victorian terraces', 'New developments', 'Converted flats', '1930s houses'],
+      affluenceLevel: 'Middle',
+    },
+    
+    history: `Tottenham has a rich history dating to the Domesday Book. The area industrialised in the Victorian era with rows of terraced houses built for workers. Tottenham Hotspur FC, founded in 1882, has been central to local identity.
+
+The new stadium development, opened in 2019, is driving significant regeneration investment. Bruce Castle, a Grade I listed manor house, serves as the local museum.`,
+    
+    character: `Tottenham is London's most dynamic regeneration story, with the new stadium creating thousands of jobs and homes. Victorian terraces offer excellent value, while new developments provide modern alternatives.
+
+The diverse community and improving transport links are attracting young professionals and families seeking affordable homes with renovation potential.`,
+    
+    landmarks: [
+      'Tottenham Hotspur Stadium',
+      'Bruce Castle',
+      'Tottenham Hale Station',
+      'Seven Sisters Market',
+    ],
+    
+    parks: [
+      'Tottenham Marshes',
+      'Bruce Castle Park',
+      'Lordship Recreation Ground',
+      'Lee Valley',
+    ],
+    
+    transport: {
+      stations: ['Seven Sisters Underground (Victoria Line)', 'Tottenham Hale (Victoria/Overground)', 'White Hart Lane (Overground)'],
+      buses: ['149', '243', '259', '279', '349', '476'],
+      travelZone: 'Zone 3',
+    },
+    
+    council: {
+      name: 'London Borough of Haringey',
+      planningPortal: 'https://www.haringey.gov.uk/planning',
+      conservationAreas: ['Bruce Grove Conservation Area', 'Seven Sisters/Page Green Conservation Area'],
+      articleFourAreas: [],
+    },
+    
+    topServices: [
+      'boiler-installation',
+      'bathroom-installation',
+      'kitchen-fitting',
+      'electrical-rewiring',
+      'plastering',
+      'damp-proofing',
+    ],
+    
+    commonIssues: [
+      'Victorian property renovation',
+      'First-time buyer improvements',
+      'Central heating installation',
+      'Kitchen and bathroom updates',
+      'Period feature restoration',
+      'Buy-to-let refurbishment',
+    ],
+    
+    coveredStreets: [
+      'high-road-tottenham',
+      'bruce-grove',
+      'philip-lane',
+      'lansdowne-road',
+      'west-green-road',
+    ],
+    
+    adjacentAreas: ['wood-green', 'edmonton', 'walthamstow', 'stamford-hill', 'harringay'],
+  },
 ];
 
 // Helper functions
@@ -757,3 +1577,4 @@ export function getNeighborhoodHub(slug: string): NeighborhoodHub | undefined {
 export function getAllNeighborhoodSlugs(): string[] {
   return neighborhoodHubs.map(n => n.slug);
 }
+

@@ -7,28 +7,85 @@ import { siteConfig, BASE_URL } from '@/lib/config';
 import { locations } from './locations';
 import { services } from './services';
 
-// All areas we serve - explicit for Google
+// All areas we serve - explicit for Google - 100x SEO EXPANDED
 const servedAreas = [
   // NW3 - Primary
   'Hampstead', 'Swiss Cottage', 'Belsize Park', 'Primrose Hill', 'South Hampstead',
   // NW6
-  'West Hampstead', 'Kilburn', 'Queens Park', 'Brondesbury',
+  'West Hampstead', 'Kilburn', 'Queens Park', 'Brondesbury', 'Brondesbury Park',
   // NW5
   'Kentish Town', 'Tufnell Park', 'Gospel Oak', 'Dartmouth Park',
   // NW1
-  'Camden Town', 'Regents Park', 'Euston',
-  // N6/N2/N10
-  'Highgate', 'East Finchley', 'Muswell Hill',
+  'Camden Town', 'Regents Park', 'Euston', 'Somers Town',
+  // NW2
+  'Cricklewood', 'Dollis Hill', 'Willesden Green', 'Neasden',
+  // NW4
+  'Hendon', 'Brent Cross', 'Hendon Central', 'West Hendon',
+  // NW7
+  'Mill Hill', 'Mill Hill East', 'Mill Hill Broadway',
+  // NW8
+  'St Johns Wood', 'Maida Vale', 'Little Venice',
+  // NW9
+  'Colindale', 'Kingsbury', 'The Hyde', 'Queensbury',
+  // NW10
+  'Willesden', 'Harlesden', 'Kensal Green', 'Kensal Rise', 'Park Royal',
+  // NW11
+  'Golders Green', 'Hampstead Garden Suburb', 'Childs Hill', 'Temple Fortune',
+  // N1
+  'Islington', 'Angel', 'Highbury', 'Barnsbury', 'Canonbury',
+  // N2
+  'East Finchley', 'Fortis Green', 'Cherry Tree Wood',
+  // N3
+  'Finchley Central', 'Church End Finchley',
+  // N4
+  'Finsbury Park', 'Manor House', 'Harringay Ladder',
+  // N5
+  'Highbury', 'Drayton Park', 'Highbury Fields',
+  // N6
+  'Highgate', 'Highgate Village', 'Highgate Hill',
+  // N7
+  'Holloway', 'Nags Head', 'Lower Holloway', 'Caledonian Road',
   // N8
   'Crouch End', 'Hornsey', 'Stroud Green',
+  // N9
+  'Edmonton', 'Lower Edmonton',
+  // N10
+  'Muswell Hill', 'Alexandra Park', 'Colney Hatch',
+  // N11
+  'New Southgate', 'Friern Barnet', 'Bounds Green', 'Arnos Grove',
+  // N12
+  'North Finchley', 'Woodside Park', 'Whetstone',
+  // N13
+  'Palmers Green', 'Southgate', 'Bowes Park',
+  // N14
+  'Southgate', 'Oakwood', 'Cockfosters',
+  // N15
+  'Seven Sisters', 'South Tottenham', 'West Green',
+  // N16
+  'Stoke Newington', 'Stamford Hill', 'Shacklewell', 'Newington Green',
+  // N17
+  'Tottenham', 'White Hart Lane', 'Tottenham Hale',
+  // N18
+  'Upper Edmonton',
+  // N19
+  'Archway', 'Upper Holloway',
+  // N20
+  'Whetstone', 'Totteridge', 'Oakleigh Park',
+  // N21
+  'Winchmore Hill', 'Grange Park', 'Bush Hill Park',
+  // N22
+  'Wood Green', 'Alexandra Palace', 'Bounds Green',
   // Boroughs
-  'Camden', 'Haringey', 'Islington', 'Barnet',
+  'Camden', 'Haringey', 'Islington', 'Barnet', 'Enfield', 'Hackney', 'Brent',
 ];
 
-// All postcodes served
+// All postcodes served - 100x SEO EXPANDED
 const servedPostcodes = [
-  'NW1', 'NW2', 'NW3', 'NW5', 'NW6', 'NW8', 'NW10', 'NW11',
-  'N1', 'N2', 'N4', 'N5', 'N6', 'N7', 'N8', 'N10', 'N19',
+  // NW postcodes
+  'NW1', 'NW2', 'NW3', 'NW4', 'NW5', 'NW6', 'NW7', 'NW8', 'NW9', 'NW10', 'NW11',
+  // N postcodes
+  'N1', 'N2', 'N3', 'N4', 'N5', 'N6', 'N7', 'N8', 'N9', 'N10', 
+  'N11', 'N12', 'N13', 'N14', 'N15', 'N16', 'N17', 'N18', 'N19', 'N20', 'N21', 'N22',
 ];
 
 // Service categories we're experts in

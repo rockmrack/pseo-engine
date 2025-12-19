@@ -5,14 +5,23 @@ import { locations, getAllAreas, getAllPostcodes } from '@/lib/data/locations';
 import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Areas We Cover | North London Home Services',
-  description: `${siteConfig.businessName} provides expert home services across Hampstead, Belsize Park, Highgate, St John's Wood, and all of North London. Find local tradespeople near you.`,
+  title: 'Areas We Cover | Hampstead, North West & North London Home Services',
+  description: `${siteConfig.businessName} provides expert home renovation services across ALL of North London. Covering Hampstead, Highgate, Muswell Hill, Crouch End, Islington, Finchley, Golders Green, Wood Green, Tottenham & 30+ postcodes including NW1-NW11 and N1-N22. Call 07459 345456.`,
   keywords: [
-    'North London tradesman',
-    'Hampstead plumber',
-    'Highgate electrician',
-    'NW3 builder',
-    'local home services',
+    // NW Postcodes
+    'plumber NW1', 'plumber NW2', 'plumber NW3', 'plumber NW4', 'plumber NW5',
+    'plumber NW6', 'plumber NW7', 'plumber NW8', 'plumber NW9', 'plumber NW10', 'plumber NW11',
+    // N Postcodes
+    'electrician N1', 'electrician N2', 'electrician N3', 'electrician N4', 'electrician N5',
+    'electrician N6', 'electrician N7', 'electrician N8', 'electrician N9', 'electrician N10',
+    'electrician N11', 'electrician N12', 'electrician N13', 'electrician N14', 'electrician N15',
+    'electrician N16', 'electrician N17', 'electrician N18', 'electrician N19', 'electrician N20',
+    'electrician N21', 'electrician N22',
+    // Area names
+    'builder Hampstead', 'builder Highgate', 'builder Muswell Hill', 'builder Crouch End',
+    'builder Islington', 'builder Finchley', 'builder Golders Green', 'builder Stoke Newington',
+    'builder Mill Hill', 'builder Hendon', 'builder Wood Green', 'builder Tottenham',
+    'North London tradesman', 'NW London home services', 'local plumber North London',
   ],
 };
 

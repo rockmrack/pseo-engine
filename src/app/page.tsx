@@ -144,15 +144,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Areas We Cover */}
+      {/* Areas We Cover - EXPANDED FOR 100x SEO */}
       <section className="section-cream">
         <div className="container-lg">
           <div className="text-center mb-12">
-            <h2 className="heading-2 text-navy-900 mb-4">Areas We Cover</h2>
+            <h2 className="heading-2 text-navy-900 mb-4">Areas We Cover Across North London</h2>
             <p className="body-large text-navy-600 max-w-2xl mx-auto">
-              Based at {siteConfig.address.street}, we serve all of North London with
-              fast response times and local expertise.
+              Based at {siteConfig.address.street}, we serve ALL of North West and North London with
+              fast response times and local expertise. Covering 30+ postcodes.
             </p>
+          </div>
+
+          {/* Postcode badges for SEO */}
+          <div className="mb-8 text-center">
+            <p className="text-sm text-navy-500 mb-3 font-medium">Postcodes We Cover:</p>
+            <div className="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto">
+              {['NW1', 'NW2', 'NW3', 'NW4', 'NW5', 'NW6', 'NW7', 'NW8', 'NW9', 'NW10', 'NW11', 
+                'N1', 'N2', 'N3', 'N4', 'N5', 'N6', 'N7', 'N8', 'N9', 'N10', 
+                'N11', 'N12', 'N13', 'N14', 'N15', 'N16', 'N17', 'N18', 'N19', 'N20', 'N21', 'N22'].map((postcode) => (
+                <Link
+                  key={postcode}
+                  href={`/postcodes/${postcode.toLowerCase()}`}
+                  className="badge bg-gold-100 text-gold-700 hover:bg-gold-200 transition-colors"
+                >
+                  {postcode}
+                </Link>
+              ))}
+            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
@@ -171,6 +189,27 @@ export default function HomePage() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          {/* Area links for SEO */}
+          <div className="bg-white rounded-xl p-6 border border-cream-200 mb-8">
+            <h3 className="font-semibold text-navy-900 mb-4 text-center">All Areas We Serve:</h3>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm">
+              {['Hampstead', 'Highgate', 'Muswell Hill', 'Crouch End', 'Islington', 'Finchley', 
+                'Golders Green', 'Swiss Cottage', 'Belsize Park', 'Primrose Hill', 'Camden', 
+                'Kentish Town', 'St Johns Wood', 'Maida Vale', 'West Hampstead', 'Kilburn',
+                'Mill Hill', 'Hendon', 'Colindale', 'Cricklewood', 'Willesden', 'Stoke Newington',
+                'Wood Green', 'Tottenham', 'Palmers Green', 'Southgate', 'Winchmore Hill',
+                'Archway', 'Holloway', 'Tufnell Park', 'Hornsey', 'Harringay', 'Bounds Green'].map((area) => (
+                <Link
+                  key={area}
+                  href={`/neighborhoods/${area.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '')}`}
+                  className="text-navy-600 hover:text-gold-600 transition-colors"
+                >
+                  {area}
+                </Link>
+              ))}
+            </div>
           </div>
 
           <div className="text-center">
