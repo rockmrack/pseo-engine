@@ -88,13 +88,21 @@ export default async function AreaPage({ params }: PageProps) {
   }
 
   // Get location and service details
-  const areaLocations = area.locations
-    .map(slug => locations.find(l => l.slug === slug))
-    .filter(Boolean);
+  // For postcodes, find actual street locations within this postcode area
+  // For boroughs/regions, find locations in that borough/area
+  const areaLocations = area.type === 'postcode'
+    ? locations.filter(l => l.postcode.toLowerCase() === areaSlug.toLowerCase())
+    : locations.filter(l => 
+        l.borough.toLowerCase().replace(/\s+/g, '-') === areaSlug.toLowerCase() ||
+        l.area.toLowerCase().replace(/\s+/g, '-') === areaSlug.toLowerCase()
+      );
 
   const popularServices = area.popularServices
     .map(slug => services.find(s => s.slug === slug))
     .filter(Boolean);
+  
+  // Get the first actual location slug for service links
+  const primaryLocationSlug = areaLocations.length > 0 ? areaLocations[0].slug : null;
 
   const typeLabel = area.type === 'postcode' ? 'Postcode Area' : area.type === 'borough' ? 'London Borough' : 'Region';
 
@@ -169,10 +177,10 @@ export default async function AreaPage({ params }: PageProps) {
             Popular Services in {area.name}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {popularServices.map(service => service && (
+            {popularServices.map(service => service && primaryLocationSlug && (
               <Link
                 key={service.slug}
-                href={`/local/${area.locations[0]}/${service.slug}`}
+                href={`/local/${primaryLocationSlug}/${service.slug}`}
                 className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow border border-cream-200"
               >
                 <div className="text-4xl mb-4">{getServiceIcon(service.category)}</div>
@@ -257,10 +265,10 @@ export default async function AreaPage({ params }: PageProps) {
             All Services Available in {area.name}
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {services.map(service => (
+            {services.map(service => primaryLocationSlug && (
               <Link
                 key={service.slug}
-                href={`/local/${area.locations[0]}/${service.slug}`}
+                href={`/local/${primaryLocationSlug}/${service.slug}`}
                 className="flex items-center gap-3 p-3 bg-white rounded-lg border border-cream-200 hover:border-gold-400 transition-colors"
               >
                 <span className="text-2xl">{getServiceIcon(service.category)}</span>
