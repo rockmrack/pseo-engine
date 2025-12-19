@@ -277,6 +277,7 @@ export interface SiteConfig {
   serviceArea: {
     primary: string[];
     secondary: string[];
+    tertiary?: string[];
     radius: number;
   };
 }
