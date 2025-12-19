@@ -36,6 +36,12 @@ import { testimonialCategories } from '@/lib/data/testimonials-database';
 import { propertyEras, servicesForPropertyTypes } from '@/lib/data/property-age-database';
 import { rooms, roomServices } from '@/lib/data/room-services-database';
 import { seasons } from '@/lib/data/seasonal-services-database';
+// 500x SEO Domination imports
+import { microNeighborhoods } from '@/lib/data/micro-neighborhoods';
+import { problems as problemSolutions } from '@/lib/data/problem-solutions';
+import { propertyEras as propertyTypeEras, propertyTypes } from '@/lib/data/property-types';
+import { seasons as seasonalData, urgencyTypes } from '@/lib/data/seasonal-urgency';
+import { voiceSearchQuestions } from '@/lib/data/voice-search';
 import { BASE_URL } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -563,6 +569,94 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // ============================================================================
+  // 500x SEO DOMINATION - MASSIVE PAGE EXPANSION
+  // ============================================================================
+
+  // Micro-neighborhood pages (hyper-local targeting)
+  const microNeighborhoodPages: MetadataRoute.Sitemap = microNeighborhoods.map(n => ({
+    url: `${baseUrl}/neighborhoods/${n.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Micro-neighborhood + service combinations
+  const microNeighborhoodServicePages: MetadataRoute.Sitemap = [];
+  const topServiceSlugs = services.slice(0, 20).map(s => s.slug);
+  for (const neighborhood of microNeighborhoods) {
+    for (const serviceSlug of topServiceSlugs) {
+      microNeighborhoodServicePages.push({
+        url: `${baseUrl}/local/${neighborhood.slug}/${serviceSlug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.75,
+      });
+    }
+  }
+
+  // Problem-solution pages with detailed content
+  const problemSolutionPages: MetadataRoute.Sitemap = problemSolutions.map(p => ({
+    url: `${baseUrl}/problems/${p.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Property era pages (targeting "georgian house renovation", etc.)
+  const propertyEraDetailPages: MetadataRoute.Sitemap = propertyTypeEras.map(era => ({
+    url: `${baseUrl}/property-type/${era.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Property type pages (targeting "terraced house renovation", etc.)
+  const propertyTypeDetailPages: MetadataRoute.Sitemap = propertyTypes.map(pt => ({
+    url: `${baseUrl}/property-types/${pt.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  // Property era + area combinations
+  const propertyEraAreaPages: MetadataRoute.Sitemap = [];
+  for (const era of propertyTypeEras) {
+    for (const area of era.popularIn.slice(0, 5)) {
+      const areaSlug = area.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
+      propertyEraAreaPages.push({
+        url: `${baseUrl}/property-type/${era.slug}/${areaSlug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.75,
+      });
+    }
+  }
+
+  // Seasonal urgency pages (winter boiler, summer AC, etc.)
+  const seasonalUrgencyPages: MetadataRoute.Sitemap = seasonalData.map(s => ({
+    url: `${baseUrl}/seasons/${s.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  // Urgency type pages (same-day, weekend, evening service)
+  const urgencyServicePages: MetadataRoute.Sitemap = urgencyTypes.map(u => ({
+    url: `${baseUrl}/urgent/${u.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'daily' as const,
+    priority: 0.9,
+  }));
+
+  // Voice search / FAQ answer pages
+  const voiceSearchPages: MetadataRoute.Sitemap = voiceSearchQuestions.map(q => ({
+    url: `${baseUrl}/answers/${q.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }));
+
   // Combine all pages
   return [
     ...staticPages,
@@ -613,5 +707,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...propertyEraPages,
     ...roomServicePages,
     ...seasonalServicePages,
+    // 500x SEO DOMINATION - ABSOLUTE MARKET SATURATION
+    ...microNeighborhoodPages,
+    ...microNeighborhoodServicePages,
+    ...problemSolutionPages,
+    ...propertyEraDetailPages,
+    ...propertyTypeDetailPages,
+    ...propertyEraAreaPages,
+    ...seasonalUrgencyPages,
+    ...urgencyServicePages,
+    ...voiceSearchPages,
   ];
 }
